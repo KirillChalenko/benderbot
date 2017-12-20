@@ -1,5 +1,5 @@
 import Foundation
-@testable import App
+@testable import BenderBot
 @testable import Vapor
 import XCTest
 import Testing
