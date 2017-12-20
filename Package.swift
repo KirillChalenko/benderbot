@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "benderbot",
     products: [
-        .library(name: "App", targets: ["App"]),
+        .library(name: "BenderBot", targets: ["BenderBot"]),
         .executable(name: "Run", targets: ["Run"])
     ],
     dependencies: [
@@ -13,14 +13,13 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.2.0")),
     ],
     targets: [
-        .target(name: "App", dependencies: ["Vapor", "FluentProvider"],
+        .target(name: "BenderBot", dependencies: ["Vapor", "FluentProvider"],
                 exclude: [
                     "Config",
                     "Public",
                     "Resources",
                 ]),
-        .target(name: "Run", dependencies: ["App"]),
-        .testTarget(name: "AppTests", dependencies: ["App", "Testing"])
+        .target(name: "Run", dependencies: ["BenderBot"]),
+        .testTarget(name: "AppTests", dependencies: ["BenderBot", "Testing"])
     ]
 )
-
