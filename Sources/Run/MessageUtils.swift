@@ -7,10 +7,17 @@
 
 import Foundation
 
+func random(max: Int) -> Int {
+    #if os(Linux)
+        return Int(random() % (max + 1))
+    #else
+        return Int(arc4random_uniform(UInt32(max)))
+    #endif
+}
+
 func randomGreeting() -> String {
     let greetings = ["What's up man!", "Hi human slave!", "Ola! Tudo Bom?", "Hey sexy mama, wanna kill all humans?"]
-    let random = Int(arc4random_uniform(UInt32(greetings.count)))
-    return greetings[random]
+    return greetings[random(max: greetings.count)]
 }
 
 func randomQuote() -> String {
@@ -30,8 +37,7 @@ func randomQuote() -> String {
         "I got ants my butt, and I needs to strut!",
         "Afterlife? If I thought I had to live another life, I’d kill myself right now!"
     ]
-    let random = Int(arc4random_uniform(UInt32(quotes.count)))
-    return quotes[random]
+    return quotes[random(max: quotes.count)]
 }
 
 func handleMessage(message: String, userName: String) -> String {
