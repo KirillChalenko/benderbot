@@ -6,17 +6,14 @@ let package = Package(
         Target(name: "Run")
     ],
     dependencies: [
-        .Package(url: "https://github.com/vapor/vapor.git", majorVersion: 2),
-        .Package(url: "https://github.com/vapor/fluent-provider.git", majorVersion: 1),
-        .Package(url: "https://github.com/nodes-vapor/sugar.git", majorVersion: 2),
-        .Package(url: "https://github.com/nodes-vapor/meta.git", majorVersion: 2)
+        .Package(url: "https://github.com/vapor/vapor.git", majorVersion: 2)
     ],
     exclude: [
         "Config",
         "Database",
         "Localization",
         "Public",
-        "Resources",
+        "Resources"
     ]
 )
 
