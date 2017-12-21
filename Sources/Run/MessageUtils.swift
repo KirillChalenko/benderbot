@@ -46,7 +46,7 @@ func handleMessage(message: String, userName: String) -> String {
     if message.isEmpty {
         response = "Your message is empty, human..."
     } else {
-        if message.hasPrefix("/") {
+        if message.lowercased().hasPrefix("/") {
             switch message {
             case "/start":
                 response = "Welcome to the Future, human slave!"
@@ -54,24 +54,24 @@ func handleMessage(message: String, userName: String) -> String {
                 response = "Hahaha. Relax " + userName + "\n" +
                     "/start - Welcome from the smartest robot\n" +
                     "/help - Help youself, human\n" +
-                    "/quote - Listen to a witty quote from me\n"
+                    "/hi - Hail the shiny metal robot\n" +
+                    "/quote - Listen to a witty quote from me\n" +
+                    "/rapha - For whose humans, who doesn't know who is Rapha (if there is someone)" +
+                    "/rapha age - The only source of truth about Rapha's age (even of he says different)"
             case "/quote":
                 response = randomQuote()
+            case "/hi", "/hey", "/ola", "/whatsup":
+                response = randomGreeting()
+            case "/rapha":
+                response = "http://joxi.net/82QEk7Mu1N3ak2.jpg"
+            case "/rapha age":
+                response = "Some people told me, that he is older than all brazilians..hehehe\n" +
+                    "But I think he is even older!"
             default:
                 response = "Unrecognized command.\nTo list all available commands type /help"
             }
         } else {
-            switch message.lowercased() {
-            case "hi", "hey", "ola", "whats up":
-                response = randomGreeting()
-            case "rapha":
-                response = "http://joxi.net/82QEk7Mu1N3ak2.jpg"
-            case "rapha age":
-                response = "Some people told me, that he is older than all brazilians..hehehe\n" +
-                "But I think he is even older!"
-            default:
-                response = "I hate humans"
-            }
+            response = "I hate humans"
         }
     }
     
