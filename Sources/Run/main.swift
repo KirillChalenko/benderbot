@@ -28,12 +28,18 @@ drop.post(secret) { request in
     /// Let's prepare the response message text.
     var response: String = ""
     
+    drop.console.info("New message has come")
+    
     /// Chat ID from request JSON.
     let chatID: Int = request.data["message", "chat", "id"]?.int ?? 0
     /// Message text from request JSON.
     let message: String = request.data["message", "text"]?.string ?? ""
     /// User first name from request JSON.
     let userFirstName: String = request.data["message", "from", "first_name"]?.string ?? ""
+    
+    drop.console.info("chat id = " + String(chatID))
+    drop.console.info("message = " + message)
+    drop.console.info("user first name = " + userFirstName)
     
     /// Check if the message is empty
     if message.isEmpty {
@@ -77,5 +83,7 @@ drop.post(secret) { request in
         ]
     )
 }
+
+drop.console.info("Starting server")
 
 try drop.run()
